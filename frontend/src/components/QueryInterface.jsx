@@ -8,7 +8,10 @@ import React, { useState } from 'react';
 import axios from 'axios';
 import './QueryInterface.css';
 
-const API_URL = 'http://localhost:8000';
+// Auto-detect API URL: use /api in production (Vercel), localhost in development
+const API_URL = import.meta.env.MODE === 'production' 
+  ? '/api'  // Vercel will rewrite /api/* to serverless functions
+  : 'http://localhost:8000';
 
 const QueryInterface = () => {
   const [query, setQuery] = useState('');
