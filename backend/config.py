@@ -39,9 +39,21 @@ class Settings(BaseSettings):
     port: int = 8000
     
     class Config:
+        # .env file is optional - will use system environment variables in production
         env_file = ".env"
+        env_file_encoding = 'utf-8'
         case_sensitive = False
+        extra = "ignore"  # Ignore extra env vars not defined in model
 
 
 # Global settings instance
-settings = Settings()
+# Pydantic will load from environment variables if .env doesn't exist
+try:
+    settings = Settings()
+except Exception as e:
+    # In production (Vercel), .env won't exist - use system env vars
+    import os
+    if not os.path.exists(".env"):
+        settings = Settings(_env_file=None)  # Load from system environment only
+    else:
+        raise e
