@@ -7,6 +7,12 @@ __pycache__/
 venv/
 env/
 ENV/
+backend/.env
+backend/venv/
+
+# Don't include backend folder in function (imported via api/index.py)
+backend/__pycache__/
+backend/*.pyc
 
 # Node
 node_modules/
