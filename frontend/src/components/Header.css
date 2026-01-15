@@ -1,0 +1,110 @@
+.app-header {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+  padding: 24px 0;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  margin-bottom: 32px;
+}
+
+.header-content {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 24px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 16px;
+}
+
+.header-left h1 {
+  margin: 0;
+  font-size: 2rem;
+  font-weight: 700;
+}
+
+.subtitle {
+  margin: 4px 0 0 0;
+  opacity: 0.9;
+  font-size: 1rem;
+}
+
+.tech-stack {
+  margin: 8px 0 0 0;
+  opacity: 0.85;
+  font-size: 0.85rem;
+  font-weight: 500;
+  letter-spacing: 0.3px;
+}
+
+.header-right {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+
+.status-indicator {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 16px;
+  background: rgba(255, 255, 255, 0.2);
+  border-radius: 20px;
+  font-size: 0.9rem;
+}
+
+.status-dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  animation: pulse 2s infinite;
+}
+
+.status-dot.status-healthy {
+  background: #10b981;
+}
+
+.status-dot.status-checking {
+  background: #fbbf24;
+}
+
+.status-dot.status-error {
+  background: #ef4444;
+}
+
+@keyframes pulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.5; }
+}
+
+.stats-display {
+  padding: 8px 16px;
+  background: rgba(255, 255, 255, 0.2);
+  border-radius: 20px;
+  font-size: 0.9rem;
+}
+
+.refresh-btn, .clear-btn {
+  padding: 8px 16px;
+  background: rgba(255, 255, 255, 0.2);
+  color: white;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 0.9rem;
+  font-weight: 600;
+  transition: background 0.2s;
+}
+
+.refresh-btn:hover, .clear-btn:hover {
+  background: rgba(255, 255, 255, 0.3);
+}
+
+.clear-btn {
+  background: rgba(239, 68, 68, 0.3);
+}
+
+.clear-btn:hover {
+  background: rgba(239, 68, 68, 0.5);
+}

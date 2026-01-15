@@ -1,0 +1,26 @@
+{
+  "buildCommand": "cd frontend && npm install && npm run build",
+  "outputDirectory": "frontend/dist",
+  "framework": "vite",
+  "rewrites": [
+    {
+      "source": "/api/(.*)",
+      "destination": "/api/index.py"
+    }
+  ],
+  "env": {
+    "GOOGLE_API_KEY": "@google_api_key",
+    "QDRANT_URL": "@qdrant_url",
+    "QDRANT_API_KEY": "@qdrant_api_key",
+    "JINA_API_KEY": "@jina_api_key",
+    "CHUNK_SIZE": "1000",
+    "CHUNK_OVERLAP": "150",
+    "COLLECTION_NAME": "mini_rag_docs",
+    "EMBEDDING_MODEL": "text-embedding-004",
+    "LLM_MODEL": "models/gemini-2.0-flash",
+    "TOP_K_RETRIEVAL": "3",
+    "TOP_K_RERANK": "3",
+    "SIMILARITY_THRESHOLD": "0.3",
+    "USE_RERANKER": "false"
+  }
+}

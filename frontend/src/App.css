@@ -1,0 +1,96 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  background: #f5f7fa;
+}
+
+.app {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.main-content {
+  flex: 1;
+  padding: 0 24px;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.app-footer {
+  background: #1a1a1a;
+  color: white;
+  padding: 32px 24px;
+  text-align: center;
+  margin-top: 48px;
+}
+
+.app-footer .footer-title {
+  margin: 0 0 20px 0;
+  font-size: 0.9rem;
+  opacity: 0.7;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.tech-logos {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 40px;
+  flex-wrap: wrap;
+}
+
+.tech-logos a {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s ease;
+  opacity: 0.85;
+  padding: 8px;
+  border-radius: 8px;
+}
+
+.tech-logos a:hover {
+  opacity: 1;
+  transform: translateY(-4px);
+  background: rgba(255, 255, 255, 0.05);
+}
+
+.tech-logo {
+  height: 45px;
+  width: auto;
+  object-fit: contain;
+  filter: brightness(0) invert(1);
+  transition: filter 0.3s ease;
+}
+
+.tech-logos a:hover .tech-logo {
+  filter: none;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .main-content {
+    padding: 0 16px;
+  }
+  
+  .query-input-section {
+    flex-direction: column;
+  }
+  
+  .query-btn {
+    width: 100%;
+  }
+}
