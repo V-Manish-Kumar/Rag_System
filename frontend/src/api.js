@@ -4,10 +4,11 @@
 
 import axios from 'axios';
 
-// Auto-detect API URL: use /api in production (Vercel), localhost in development
-const API_BASE_URL = import.meta.env.MODE === 'production' 
-  ? '/api'  // Vercel rewrites /api/* to serverless functions
-  : (import.meta.env.VITE_API_URL || 'http://localhost:8000');
+// Auto-detect API URL based on environment
+// Development: localhost:8000
+// Production: Cloud Run URL from VITE_API_URL, fallback to /api for Vercel serverless
+const API_BASE_URL = import.meta.env.VITE_API_URL 
+  || (import.meta.env.MODE === 'production' ? '/api' : 'http://localhost:8000');
 
 const api = axios.create({
   baseURL: API_BASE_URL,
