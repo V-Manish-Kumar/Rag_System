@@ -19,6 +19,7 @@ app = FastAPI(
     title="Mini RAG API",
     description="Retrieval-Augmented Generation API with Qdrant, Gemini, and Jina",
     version="1.0.0",
+    root_path="/api"  # For Vercel serverless routing
 )
 
 # CORS configuration for frontend
