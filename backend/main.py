@@ -30,8 +30,14 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
-# Initialize RAG pipeline
-rag = RAGPipeline()
+# Initialize RAG pipeline with error handling
+try:
+    rag = RAGPipeline()
+    initialization_error = None
+except Exception as e:
+    rag = None
+    initialization_error = str(e)
+    print(f"ERROR: Failed to initialize RAG pipeline: {e}")
 
 
 # Request/Response Models
@@ -92,6 +98,13 @@ async def root():
 @app.get("/health")
 async def health_check():
     """Detailed health check."""
+    if initialization_error:
+        return {
+            "status": "error",
+            "error": initialization_error,
+            "timestamp": time.time(),
+        }
+    
     return {
         "status": "healthy",
         "timestamp": time.time(),
