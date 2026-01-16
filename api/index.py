@@ -24,11 +24,16 @@ try:
     from mangum import Mangum
     handler = Mangum(app, lifespan="off")
     
-except ImportError:
+    # Vercel expects 'app' or 'handler' to be exported
+    # Export both for compatibility
+    __all__ = ['handler', 'app']
+    
+except ImportError as ie:
     # Mangum not installed, try direct export
     try:
         from main import app
         handler = app
+        __all__ = ['handler', 'app']
     except Exception as e:
         # Fallback error handler
         from fastapi import FastAPI
@@ -44,9 +49,12 @@ except ImportError:
                 content={
                     "error": "Failed to initialize application",
                     "details": str(e),
+                    "import_error": str(ie) if 'ie' in locals() else None,
                     "path": path,
-                    "backend_path": backend_path
+                    "backend_path": backend_path,
+                    "sys_path": sys.path
                 }
             )
         
         handler = app
+        __all__ = ['handler', 'app']

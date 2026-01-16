@@ -8,3 +8,4 @@ qdrant-client==1.7.0
 google-generativeai==0.4.1
 requests==2.31.0
 mangum==0.17.0
+pypdf==3.17.4
