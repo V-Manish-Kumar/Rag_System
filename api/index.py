@@ -7,9 +7,12 @@ import sys
 import os
 
 # Add backend directory to Python path
-sys.path.insert(0, os.path.join(os.path.dirname(__file__), '..', 'backend'))
+backend_path = os.path.join(os.path.dirname(__file__), '..', 'backend')
+sys.path.insert(0, backend_path)
 
+# Import and configure the app
 from main import app
 
-# Vercel expects a 'app' or 'handler' variable
+# Export for Vercel
 handler = app
+app = app  # Vercel also looks for 'app'

@@ -43,17 +43,7 @@ class Settings(BaseSettings):
         env_file = ".env"
         env_file_encoding = 'utf-8'
         case_sensitive = False
-        extra = "ignore"  # Ignore extra env vars not defined in model
-
+        extra = "ignore"
 
 # Global settings instance
-# Pydantic will load from environment variables if .env doesn't exist
-try:
-    settings = Settings()
-except Exception as e:
-    # In production (Vercel), .env won't exist - use system env vars
-    import os
-    if not os.path.exists(".env"):
-        settings = Settings(_env_file=None)  # Load from system environment only
-    else:
-        raise e
+settings = Settings()
